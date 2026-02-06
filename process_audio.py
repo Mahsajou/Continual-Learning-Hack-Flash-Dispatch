@@ -18,15 +18,15 @@ async def process_call(file_path):
     # 2. Transcribe with Deepgram
     print(f"Transcribing {file_path}...")
     try:
-        deepgram = DeepgramClient(dg_api_key)
+        # Initialize Deepgram
+        deepgram = DeepgramClient(api_key=dg_api_key)
         
         with open(file_path, "rb") as file:
             buffer_data = file.read()
 
         payload: FileSource = {"buffer": buffer_data}
         options = {"model": "nova-2", "smart_format": True}
-
-        response = deepgram.listen.rest.v("1").transcribe_file(payload, options)
+        response = deepgram.listen.v1.media.transcribe_file(request=buffer_data, **options)
         transcript = response.results.channels[0].alternatives[0].transcript
         
         print("\n--- Raw Transcript ---")
