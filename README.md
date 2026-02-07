@@ -22,9 +22,6 @@ It uses **Google Gemini** or **OpenAI (Whisper + GPT-4o)** to transcribe and ana
 ## Setup
 
 1.  **Clone the repository:**
-    ```bash
-    cd gemini-deepgram-cartesia-native
-    ```
 
 2.  **Configure Environment:**
     Create a `.env` file based on `env.example`.
@@ -82,3 +79,4 @@ python test_incident.py path/to/your/audio.mp3 --email
 - `file`: Audio file (multipart/form-data)
 - `provider`: `gemini` (default) or `openai` (query param)
 - `send_email`: `true` or `false` (default `false`) (query param)
+
